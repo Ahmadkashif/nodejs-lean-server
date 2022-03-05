@@ -1,58 +1,48 @@
-import mongoose from 'mongoose';
-import Logger from '../core/Logger';
-import { db } from '../config';
+import config from 'config';
+import Sequelize from 'sequelize';
+import PlansModel from '@models/plans.model';
+import { logger } from '@utils/logger';
 
-// Build the connection string
-const dbURI = `mongodb://${db.user}:${encodeURIComponent(db.password)}@${db.host}:${db.port}/${
-  db.name
-}`;
+const env: dbConfig = config.get('env');
+// logger.info(`Connecting DB via '${env}' profile`);
+const { pool, showsql , host,database,user,password }: dbConfig = config.get('dbConfig');
+// let host = process.env.DB_ADDRESS;
+// let database = process.env.DB_NAME;
+// let user = process.env.DB_USER;
+// let password = process.env.DB_PASSWORD;
 
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  autoIndex: true,
-  poolSize: 10, // Maintain up to 10 socket connections
-  // If not connected, return errors immediately rather than waiting for reconnect
-  bufferMaxEntries: 0,
-  connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
-  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+// logger.info(`DB host:'${host}', DB name:'${database}', DB user:'${user}', DB password:***`);
+const sequelize = new Sequelize.Sequelize(database, user, password, {
+  host: host,
+  dialect: 'mysql',
+  timezone: '+05:00',
+  define: {
+    charset: 'utf8mb4',
+    collate: 'utf8mb4_general_ci',
+    underscored: true,
+    freezeTableName: false, // true
+  },
+  pool: {
+    min: pool.min,
+    max: pool.max,
+  },
+  logQueryParameters: process.env.NODE_ENV === 'local',
+  logging: showsql
+    ? (query, time) => {
+        logger.info(time + 'ms' + ' ' + query);
+      }
+    : false,
+  benchmark: true,
+});
+
+sequelize.authenticate();
+
+const DB = {
+  Plans: PlansModel(sequelize),
+  sequelize, // connection instance (RAW queries)
+  Sequelize, // library
 };
 
-Logger.debug(dbURI);
+const Plan = sequelize.define('Plans', {});
 
-// Create the database connection
-mongoose
-  .connect(dbURI, options)
-  .then(() => {
-    Logger.info('Mongoose connection done');
-  })
-  .catch((e) => {
-    Logger.info('Mongoose connection error');
-    Logger.error(e);
-  });
-
-// CONNECTION EVENTS
-// When successfully connected
-mongoose.connection.on('connected', () => {
-  Logger.info('Mongoose default connection open to ' + dbURI);
-});
-
-// If the connection throws an error
-mongoose.connection.on('error', (err) => {
-  Logger.error('Mongoose default connection error: ' + err);
-});
-
-// When the connection is disconnected
-mongoose.connection.on('disconnected', () => {
-  Logger.info('Mongoose default connection disconnected');
-});
-
-// If the Node process ends, close the Mongoose connection
-process.on('SIGINT', () => {
-  mongoose.connection.close(() => {
-    Logger.info('Mongoose default connection disconnected through app termination');
-    process.exit(0);
-  });
-});
+export default DB;
