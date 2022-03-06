@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
-import { Order } from '../interfaces/models/order.interface';
+import { Order } from '@interfaces/models/order.interface';
 import { OrderType } from '../interfaces/enums';
 
 export type OrderCreationAttributes = Optional<
@@ -8,13 +8,13 @@ export type OrderCreationAttributes = Optional<
 >;
 
 export class OrderModel extends Model<Order, OrderCreationAttributes> implements Order {
-  public id!: number;
-  public name!: string;
-  public code!: string;
-  public type!: OrderType;
-  public days!: number;
-  public price!: number;
-  public active!: boolean;
+  public id: number;
+  public name: string;
+  public code: string;
+  public type: OrderType;
+  public days: number;
+  public price: number;
+  public active: boolean;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt!: Date;

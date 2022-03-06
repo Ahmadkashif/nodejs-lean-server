@@ -1,29 +1,41 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    // Import non-ES modules as default imports.
-    "esModuleInterop": true,
-    // Target latest version of ECMAScript.
-    "target": "ES2019",
-    // Process & infer types from .js files.
-    "allowJs": false,
-    // Enable strictNullChecks & noImplicitAny.
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "strict": true,
-    "strictFunctionTypes": false,
-    "noImplicitThis": false,
-    // Search under node_modules for non-relative imports.
-    "moduleResolution": "node",
-    // Import .json files
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "outDir": "build",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*", "src/types/*"]
-    }
-  },
   "include": ["src/**/*"],
-  "exclude": [".templates"]
+  "exclude": [".templates"],
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": false,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@controllers/*": ["controllers/*"],
+      "@dtos/*": ["dtos/*"],
+      "@exceptions/*": ["exceptions/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@mappers/*": ["mappers/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"]
+    }
+  }
 }
