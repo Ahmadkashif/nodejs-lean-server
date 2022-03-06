@@ -1,7 +1,7 @@
 import express from 'express';
 import { SuccessResponse } from '../../../core/ApiResponse';
 import { BadRequestError } from '../../../core/ApiError';
-import BlogRepo from '../../../database/repository/BlogRepo';
+import BlogRepo from '../../../models/repository/BlogRepo';
 import { Types } from 'mongoose';
 import validator, { ValidationSource } from '../../../helpers/validator';
 import schema from './schema';

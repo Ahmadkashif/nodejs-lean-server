@@ -1,4 +1,4 @@
-import ApiKey from '../../../src/database/model/ApiKey';
+import ApiKey from '../../../src/models/model/ApiKey';
 
 export const API_KEY = 'abc';
 

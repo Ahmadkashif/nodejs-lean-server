@@ -6,12 +6,7 @@ import { logger } from '@utils/logger';
 const env: dbConfig = config.get('env');
 // logger.info(`Connecting DB via '${env}' profile`);
 const { pool, showsql , host,database,user,password }: dbConfig = config.get('dbConfig');
-// let host = process.env.DB_ADDRESS;
-// let database = process.env.DB_NAME;
-// let user = process.env.DB_USER;
-// let password = process.env.DB_PASSWORD;
 
-// logger.info(`DB host:'${host}', DB name:'${database}', DB user:'${user}', DB password:***`);
 const sequelize = new Sequelize.Sequelize(database, user, password, {
   host: host,
   dialect: 'mysql',

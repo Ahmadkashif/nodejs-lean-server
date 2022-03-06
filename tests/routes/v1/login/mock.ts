@@ -1,10 +1,10 @@
 import { USER_ID } from '../../../auth/authentication/mock';
-import Keystore from '../../../../src/database/model/Keystore';
-import User from '../../../../src/database/model/User';
+import Keystore from '../../../../src/models/model/Keystore';
+import User from '../../../../src/models/model/User';
 import { Types } from 'mongoose';
 import bcrypt from 'bcrypt';
 import * as authUtils from '../../../../src/auth/authUtils';
-import Role from '../../../../src/database/model/Role';
+import Role from '../../../../src/models/model/Role';
 
 export const USER_EMAIL = 'random@test.com';
 export const USER_PASSWORD = 'abc123';

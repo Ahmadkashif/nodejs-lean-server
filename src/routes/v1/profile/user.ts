@@ -1,6 +1,6 @@
 import express from 'express';
 import { SuccessResponse } from '../../../core/ApiResponse';
-import UserRepo from '../../../database/repository/UserRepo';
+import UserRepo from '../../../models/repository/UserRepo';
 import { ProtectedRequest } from 'app-request';
 import { BadRequestError } from '../../../core/ApiError';
 import { Types } from 'mongoose';

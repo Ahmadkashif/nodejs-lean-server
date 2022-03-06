@@ -1,9 +1,9 @@
 import express from 'express';
 import { SuccessResponse } from '../../../core/ApiResponse';
 import crypto from 'crypto';
-import UserRepo from '../../../database/repository/UserRepo';
+import UserRepo from '../../../models/repository/UserRepo';
 import { BadRequestError, AuthFailureError } from '../../../core/ApiError';
-import KeystoreRepo from '../../../database/repository/KeystoreRepo';
+import KeystoreRepo from '../../../models/repository/KeystoreRepo';
 import { createTokens } from '../../../auth/authUtils';
 import validator from '../../../helpers/validator';
 import schema from './schema';
