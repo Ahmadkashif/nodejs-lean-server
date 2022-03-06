@@ -38,7 +38,21 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.17.0",
     "winston": "^3.6.0",
-    "winston-daily-rotate-file": "^4.5.0"
+    "winston-daily-rotate-file": "^4.5.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "cls-rtracer": "^2.6.0",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "envalid": "^7.1.0",
+    "hpp": "^0.2.3",
+    "jest": "^27.0.6",
+    "morgan": "^1.10.0",
+    "stripe": "^8.179.0",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -56,7 +70,12 @@
     "@types/node": "^14.14.6",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@types/compression": "^1.7.1",
+    "@types/config": "^0.0.39",
+    "@types/hpp": "^0.2.1",
+    "@types/sequelize": "^4.28.10",
     "@typescript-eslint/parser": "^4.6.0",
+    "typescript": "^4.0.5",
     "colors": "^1.4.0",
     "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
@@ -70,6 +89,11 @@
     "ts-jest": "^26.4.3",
     "ts-node": "^9.0.0",
     "tslint": "^6.1.0",
-    "typescript": "^4.0.5"
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "node-config": "^0.0.2",
+    "node-gyp": "^8.1.0",
+    "sequelize-cli": "^6.2.0",
+    "tsconfig-paths": "^3.10.1"
   }
 }
