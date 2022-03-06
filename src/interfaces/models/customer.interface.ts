@@ -1,27 +1,23 @@
-import { MemberType } from '@/interfaces/enums';
+import { CustomerType } from '../enums';
 
-export interface Member {
+export interface Customer {
   id: number;
   fullName: string;
   userName: string;
   phone: string;
   email: string;
   disabled: boolean;
-  type: MemberType;
-  stripeId: string;
+  type: CustomerType;
 }
 
-export interface SignInMember {
+export interface SignInCustomer {
   id: number;
   fullName: string;
   userName: string;
   phone: string;
   email: string;
   disabled: boolean;
-  type: MemberType;
-  paymentPlan?: PaymentPlan;
-  is_customer?: boolean;
-  is_premium?: boolean;
+  type: CustomerType;
 }
 
 export interface PaymentPlan {
@@ -33,11 +29,10 @@ export interface PaymentPlan {
   endDate: string;
 }
 
-export interface MemberDto {
+export interface CustomerDto {
   id: number;
   disabled: boolean;
-  type: MemberType;
-  stripeId: string;
+  type: CustomerType;
   email: string;
   phone: string;
 }
