@@ -1,7 +1,8 @@
 import config from 'config';
 import Sequelize from 'sequelize';
-import PlansModel from '@models/plans.model';
-import { logger } from '@utils/logger';
+import ordersModel from './orders.model';
+import logger from '../core/Logger';
+import { dbConfig } from '../interfaces/db.interface';
 
 const env: dbConfig = config.get('env');
 // logger.info(`Connecting DB via '${env}' profile`);
@@ -33,11 +34,11 @@ const sequelize = new Sequelize.Sequelize(database, user, password, {
 sequelize.authenticate();
 
 const DB = {
-  Plans: PlansModel(sequelize),
+  Orders: ordersModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };
 
-const Plan = sequelize.define('Plans', {});
+const Order = sequelize.define('Orders', {});
 
 export default DB;
