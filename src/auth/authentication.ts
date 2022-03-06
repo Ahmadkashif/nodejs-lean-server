@@ -1,9 +1,9 @@
 import express from 'express';
 import { ProtectedRequest } from 'app-request';
-import UserRepo from '../database/repository/UserRepo';
+import UserRepo from '../models/repository/UserRepo';
 import { AuthFailureError, AccessTokenError, TokenExpiredError } from '../core/ApiError';
 import JWT from '../core/JWT';
-import KeystoreRepo from '../database/repository/KeystoreRepo';
+import KeystoreRepo from '../models/repository/KeystoreRepo';
 import { Types } from 'mongoose';
 import { getAccessToken, validateTokenData } from './authUtils';
 import validator, { ValidationSource } from '../helpers/validator';

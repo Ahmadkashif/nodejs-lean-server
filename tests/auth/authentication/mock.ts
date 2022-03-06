@@ -1,11 +1,11 @@
 // all dependent mock should be on the top
 import { API_KEY } from '../apikey/mock';
 
-import User from '../../../src/database/model/User';
+import User from '../../../src/models/model/User';
 import { Types } from 'mongoose';
 import JWT, { JwtPayload } from '../../../src/core/JWT';
 import { BadTokenError } from '../../../src/core/ApiError';
-import Keystore from '../../../src/database/model/Keystore';
+import Keystore from '../../../src/models/model/Keystore';
 import * as authUtils from '../../../src/auth/authUtils';
 import { tokenInfo } from '../../../src/config';
 

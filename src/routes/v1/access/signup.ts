@@ -2,16 +2,16 @@ import express from 'express';
 import { SuccessResponse } from '../../../core/ApiResponse';
 import { RoleRequest } from 'app-request';
 import crypto from 'crypto';
-import UserRepo from '../../../database/repository/UserRepo';
+import UserRepo from '../../../models/repository/UserRepo';
 import { BadRequestError } from '../../../core/ApiError';
-import User from '../../../database/model/User';
+import User from '../../../models/model/User';
 import { createTokens } from '../../../auth/authUtils';
 import validator from '../../../helpers/validator';
 import schema from './schema';
 import asyncHandler from '../../../helpers/asyncHandler';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
-import { RoleCode } from '../../../database/model/Role';
+import { RoleCode } from '../../../models/model/Role';
 
 const router = express.Router();
 

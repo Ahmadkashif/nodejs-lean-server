@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import Logger from './core/Logger';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import './database'; // initialize database
+import './models'; // initialize database
 import { NotFoundError, ApiError, InternalError } from './core/ApiError';
 import routesV1 from './routes/v1';
 
