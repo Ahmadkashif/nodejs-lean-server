@@ -1,5 +1,10 @@
-export enum PlanType {
-  'trail' = 1,
-  'one-time' = 2,
-  'recurring' = 3,
+export enum OrderType {
+  'DOORSTEP_DELIVERY' = 1,
+  'PRE_ORDER' = 2
+}
+
+export enum CustomerType {
+  'free' = 1,
+  'paying' = 2,
+  'inactive' = 3
 }

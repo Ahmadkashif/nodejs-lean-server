@@ -1,4 +1,4 @@
-export interface User {
+export interface Admin {
   id: number;
   name: string;
   username: string;
