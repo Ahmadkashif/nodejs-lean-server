@@ -20,15 +20,6 @@ export interface SignInCustomer {
   type: CustomerType;
 }
 
-export interface PaymentPlan {
-  name: string;
-  payment_method: string;
-  price: number;
-  validityInDays: number;
-  startDate: string;
-  endDate: string;
-}
-
 export interface CustomerDto {
   id: number;
   disabled: boolean;

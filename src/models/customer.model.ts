@@ -1,11 +1,11 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
-import { MemberType } from '@/interfaces/enums';
+import { CustomerType } from '@/interfaces/enums';
 
-import { Member } from '@/interfaces/models/member.interface';
+import { Customer } from '@/interfaces/models/customer.interface';
 
-export type MemberCreationAttributes = Optional<Member, 'id' | 'fullName' | 'userName' | 'phone' | 'email' | 'disabled' | 'type' | 'stripeId'>;
+export type CustomerCreationAttributes = Optional<Customer, 'id' | 'fullName' | 'userName' | 'phone' | 'email' | 'disabled' | 'type'>;
 
-export class MemberModel extends Model<Member, MemberCreationAttributes> implements Member {
+export class CustomerModel extends Model<Customer, CustomerCreationAttributes> implements Customer {
   public id: number;
   public name: string;
   public userName: string;
@@ -13,7 +13,7 @@ export class MemberModel extends Model<Member, MemberCreationAttributes> impleme
   public phone: string;
   public fullName: string;
   public disabled: boolean;
-  public type: MemberType;
+  public type: CustomerType;
   public stripeId: string;
 
   public readonly createdAt!: Date;
@@ -21,8 +21,8 @@ export class MemberModel extends Model<Member, MemberCreationAttributes> impleme
   public readonly deletedAt!: Date;
 }
 
-export default function (sequelize: Sequelize): typeof MemberModel {
-  MemberModel.init(
+export default function (sequelize: Sequelize): typeof CustomerModel {
+  CustomerModel.init(
     {
       id: {
         autoIncrement: true,
@@ -51,12 +51,8 @@ export default function (sequelize: Sequelize): typeof MemberModel {
         defaultValue: false,
       },
       type: DataTypes.ENUM({
-        values: Object.keys(MemberType),
-      }),
-      stripeId: {
-        allowNull: true,
-        type: DataTypes.STRING(105),
-      },
+        values: Object.keys(CustomerType),
+      })
     },
     {
       tableName: 'members',
@@ -64,5 +60,5 @@ export default function (sequelize: Sequelize): typeof MemberModel {
     },
   );
 
-  return MemberModel;
+  return CustomerModel;
 }

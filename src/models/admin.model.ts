@@ -1,9 +1,9 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
-import { User } from '@/interfaces/models/users.interface';
+import { Admin } from '@/interfaces/models/admins.interface';
 
-export type UserCreationAttributes = Optional<User, 'id' | 'name' | 'username' | 'phone' | 'email' | 'password'>;
+export type AdminCreationAttributes = Optional<Admin, 'id' | 'name' | 'username' | 'phone' | 'email' | 'password'>;
 
-export class UserModel extends Model<User, UserCreationAttributes> implements User {
+export class AdminModel extends Model<Admin, AdminCreationAttributes> implements Admin {
   public id: number;
   public name: string;
   public username: string;
@@ -16,8 +16,8 @@ export class UserModel extends Model<User, UserCreationAttributes> implements Us
   public readonly deletedAt!: Date;
 }
 
-export default function (sequelize: Sequelize): typeof UserModel {
-  UserModel.init(
+export default function (sequelize: Sequelize): typeof AdminModel {
+  AdminModel.init(
     {
       id: {
         autoIncrement: true,
@@ -51,5 +51,5 @@ export default function (sequelize: Sequelize): typeof UserModel {
     },
   );
 
-  return UserModel;
+  return AdminModel;
 }
